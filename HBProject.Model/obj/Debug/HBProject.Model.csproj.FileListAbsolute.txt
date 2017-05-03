@@ -1,0 +1,4 @@
+F:\Projects\HBProject\HBProject.Model\bin\Debug\HBProject.Model.dll
+F:\Projects\HBProject\HBProject.Model\bin\Debug\HBProject.Model.pdb
+F:\Projects\HBProject\HBProject.Model\obj\Debug\HBProject.Model.dll
+F:\Projects\HBProject\HBProject.Model\obj\Debug\HBProject.Model.pdb

@@ -1,0 +1,10 @@
+F:\Projects\HBProject\HBBLL\bin\Debug\HBBLL.dll
+F:\Projects\HBProject\HBBLL\bin\Debug\HBBLL.pdb
+F:\Projects\HBProject\HBBLL\bin\Debug\HBDAL.dll
+F:\Projects\HBProject\HBBLL\bin\Debug\HBProject.Model.dll
+F:\Projects\HBProject\HBBLL\bin\Debug\System.Data.SQLite.dll
+F:\Projects\HBProject\HBBLL\bin\Debug\HBDAL.pdb
+F:\Projects\HBProject\HBBLL\bin\Debug\HBProject.Model.pdb
+F:\Projects\HBProject\HBBLL\obj\Debug\HBProject.BLL.csprojResolveAssemblyReference.cache
+F:\Projects\HBProject\HBBLL\obj\Debug\HBBLL.dll
+F:\Projects\HBProject\HBBLL\obj\Debug\HBBLL.pdb
