@@ -45,9 +45,10 @@ namespace HBProject.DAL
         //创建表
         public void CreateTable()
         {
-            var conn = _helper.CreateCommand("create table if not exists userinfo (id int identity  primary key , name varchar(200),password varchar(200), createdate datetime default (datetime('now', 'localtime')))");
+            var conn = _helper.CreateCommand("create table if not exists userinfo (id integer PRIMARY KEY autoincrement , name varchar(200),password varchar(200), createdate datetime default (datetime('now', 'localtime')))");
             _helper.ExecuteNonQuery(conn);
         }
+        
         
         //数据查询 
         public DataSet QueryUserInfo()
@@ -58,7 +59,7 @@ namespace HBProject.DAL
         //数据新增
         public object InsertUserInfo(UserInfo userInfo)
         {
-            var sql = "insert into userinfo(name,password) values(@name,@password)";
+            var sql = "insert into userinfo(name,password) values(@name,@password);select last_insert_rowid() AS id;";
             SQLiteParameter[] parameters = new SQLiteParameter[]
             {
                 new SQLiteParameter("@name",userInfo.UserName),
@@ -80,15 +81,15 @@ namespace HBProject.DAL
             return _helper.ExecuteNonQuery(conn);
         }
         //数据删除
-        public int DeleteUserInfo(UserInfo userInfo)
+        public object DeleteUserInfo(UserInfo userInfo)
         {
             if (string.IsNullOrEmpty(userInfo.id))
             {
                 return -1;
             }
-            var sql = "delete from  userinfo where id = " + userInfo.id;
+            var sql = "delete from  userinfo where id = " + userInfo.id + "; select count(*) AS Id  from userinfo;";
             var conn = _helper.CreateCommand(sql);
-            return _helper.ExecuteNonQuery(conn);
+            return _helper.ExecuteScalar(conn);
         }
     }
 }

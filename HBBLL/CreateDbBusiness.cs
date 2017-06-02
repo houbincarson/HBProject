@@ -53,17 +53,30 @@ namespace HBProject.BLL
            
         }
 
-        public void InsertUserInfo(UserInfo userinfo )
+        public object InsertUserInfo(UserInfo userinfo )
         {
             try
             {
-                helper.InsertUserInfo(userinfo);
+                return helper.InsertUserInfo(userinfo);
             }
             catch (Exception)
             {
                 
                 throw;
             } 
+        }
+
+        public object DeleteUserInfo(UserInfo userinfo)
+        {
+            try
+            {
+               return  helper.DeleteUserInfo(userinfo);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         public DataSet QueryUserInfo()

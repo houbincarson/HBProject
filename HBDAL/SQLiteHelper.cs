@@ -27,21 +27,10 @@ namespace HBProject.DAL
         {
             _connection = CreateConnection(connectionString); 
         }
-        public SqLiteHelper(string dbServerPath, string Version, string Password)
+        public SqLiteHelper(string dbServerPath, string version, string password)
         {
-            _connection = CreateConnection("data source=" + dbServerPath + ";Version=" + Version + ";Password=" + Password + ";"); 
+            _connection = CreateConnection("data source=" + dbServerPath + ";Version=" + version + ";Password=" + password + ";"); 
         }
-
-        /// <summary>
-        /// Creates a new <see cref="SqLiteHelper"/> instance. The ctor is marked private since all members are static.
-        /// </summary>
-        //private SqLiteHelper()
-        //{
-        //    var filePath = string.Format("{0}\\{1}", Application.StartupPath, Dbpath);
-        //    if (File.Exists(filePath)) return;
-        //    var fs = File.Create(filePath);
-        //    fs.Close();
-        //}
 
         public SQLiteConnection CreateConnection()
         {
@@ -73,8 +62,7 @@ namespace HBProject.DAL
                 cmd.Connection.Open();
             if (commandParameters.Length > 0)
             {
-                foreach (var parm in commandParameters)
-                    cmd.Parameters.Add(parm);
+                cmd.Parameters.AddRange(commandParameters);
             }
             Console.WriteLine(cmd.CommandText);
             return cmd;
@@ -312,9 +300,10 @@ namespace HBProject.DAL
         {
             if (cmd.Connection.State == ConnectionState.Closed)
                 cmd.Connection.Open();
-            var result = cmd.ExecuteScalar();
-            cmd.Dispose();
-            return result;
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapter.Fill(data);
+            return data;
         }
 
         /// <summary>
