@@ -63,6 +63,19 @@ namespace HBProject
             if (davUser == null) return;
             textBox1.Text = davUser.Cells["name"].Value.ToString();
             textBox2.Text = davUser.Cells["password"].Value.ToString();
-        }  
+        }
+
+
+        public void update(string xxx)
+        {
+            textBox2.Text = xxx;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           Form2 frm = new Form2();
+           frm.Dis += update;
+           frm.Show();
+        }
     }
 }
